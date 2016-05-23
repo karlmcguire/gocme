@@ -3,7 +3,6 @@ package gocme
 import (
 	"bytes"
 	"errors"
-	"fmt"
 	"os"
 	"os/exec"
 )
