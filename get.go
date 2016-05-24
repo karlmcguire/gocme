@@ -23,7 +23,7 @@ func GetTags(id string) ([]string, error) {
 		return nil, err
 	}
 
-	// Seperate the string at spaces, leaving us with [][]byte tag names.
+	// Seperate the byte slice at spaces, leaving us with [][]byte tag names.
 	btags := bytes.Split(rawtags, []byte(" "))
 
 	// Convert the byte tags into a string slice we can return.
