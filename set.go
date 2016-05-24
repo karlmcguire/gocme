@@ -39,5 +39,22 @@ func SetBody(id string, body string) error {
 
 	winctl2 := exec.Command("9p", "write", "acme/"+id+"/ctl")
 	winctl2.Stdin = strings.NewReader("dot=addr")
-	return winctl2.Run()
+	err = winctl2.Run()
+	if err != nil {
+		return err
+	}
+
+	// Put the new contents to disk.
+	err = Put(id)
+	if err != nil {
+		return err
+	}
+
+	// Mark the window as clean.
+	err = Clean(id)
+	if err != nil {
+		return err 
+	}
+
+	return nil
 }
